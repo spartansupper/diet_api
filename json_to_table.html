@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div>
+		    <button id="ajax-trigger">Load Data via AJAX</button>
+		</div>
+		<div id="example-table"></div>
+		<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+		<script type="text/javascript">
+		var table = new Tabulator("#example-table", {
+			height:200, // set height of table to enable virtual DOM
+			placeholder:"No Data Set",
+			columns:[ //Define Table Columns
+				{title:"long_desc", field:"long_desc", sorter:"string", width:150},
+				{title:"amount", field:"amount", sorter:"number", align:"left"},
+				{title:"calories", field:"calories", sorter:"string", sortable:false},
+			],
+		});
+		
+		//trigger AJAX load on "Load Data via AJAX" button click
+		document.getElementById("ajax-trigger").addEventListener("click", function(){
+		    table.setData("http://127.0.0.1:8000/");
+		});
+		</script>
+	</body>
+</html>
