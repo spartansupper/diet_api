@@ -16,3 +16,13 @@ The file `requirements.txt` contains the full library requirements, but in brief
 - sqlite to handle the USDA nutritional data
 - FastAPI to build the API endpoint
 - uvicorn to serve the API
+
+### Environment
+
+```
+sudo apt-get install libglpk-dev
+conda create -n dietapi python=3.7
+conda activate dietapi
+pip install fastapi uvicorn gunicorn uvloop httptools deap pandas numpy
+CVXOPT_BUILD_GLPK=1 pip install cvxopt
+```
